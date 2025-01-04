@@ -1,4 +1,4 @@
-!["toki pona li seme? mi mute li sona e ni. toki pona li ijo suli li nasin pona. jan Telakoman, lipu tenpo nanpa akesi."](SitelenPonaLukaPiJanJanpaOnjon.png)
+!["toki pona li seme? mi mute li sona e ni. toki pona li ijo suli li nasin pona. jan Telakoman, lipu tenpo nanpa akesi."](nasin-janpa.png)
 
 # toki!
 
