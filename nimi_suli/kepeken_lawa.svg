@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="72.0mm"
+   viewBox="0 0 72.0 72.0"
+   height="72.0mm"
+   id="svg1"
+   sodipodi:docname="kepeken_lawa.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.4937934"
+     inkscape:cx="197.4838"
+     inkscape:cy="284.17584"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     id="path2"
+     style="color:#000000;fill:#000000;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none"
+     d="m 54.601318,4.8301961 -16.992761,0.2661337 -0.0031,-5.168e-4 -0.0031,5.168e-4 -16.940051,0.2651001 c -2.084902,0.032865 -3.764797,1.719403 -3.789433,3.8044189 l -0.1757,15.2326622 c -0.02358,2.105007 1.647768,3.838731 3.752226,3.892269 l 13.834297,0.346232 0.126608,5.634281 c 0.01425,0.149179 0.0372,0.297398 0.06873,0.443901 C 23.151066,35.800255 12.333834,45.089293 9.4939941,60.966821 L 3.1445109,51.978739 c -1.2265263,-1.736415 -3.62831683,-2.150054 -5.3650472,-0.923974 -1.7364154,1.226526 -2.1500545,3.628317 -0.9239746,5.365047 L 9.4314657,74.220793 C 11.664186,77.378606 16.637376,75.64242 16.41967,71.781148 15.164682,49.754793 27.817005,41.360001 38.214722,42.373124 c 5.198856,0.506562 9.941106,3.354419 12.783199,8.972579 2.842093,5.618163 3.764604,14.303226 -0.01137,26.402523 -0.633239,2.029922 0.499081,4.188825 2.529045,4.821928 0.37375,0.09811 0.760141,0.139399 1.146183,0.122473 v 0.05271 l 17.158022,0 v -7.684802 l -12.120604,0 C 62.306081,63.892786 61.341418,54.734484 57.869336,47.87098 54.418873,41.050214 48.478237,36.722203 41.965914,35.20922 c 0.101153,-0.361632 0.148856,-0.736118 0.141593,-1.11156 l -0.118339,-5.267895 13.885974,0.347782 c 2.282256,0.05633 4.112027,-1.874166 3.93361,-4.150134 L 58.499788,8.3767497 C 58.339691,6.351087 56.63305,4.7985059 54.601318,4.8301961 Z m -3.493843,7.7555989 0.69143,8.787061 -9.982336,-0.249081 -0.188619,-8.389669 z m -17.177763,0.268718 0.181384,8.076509 -9.671761,-0.241329 0.08992,-7.687903 z"
+     sodipodi:nodetypes="cccccccccccccccccsscccccccsccccccccccccccccc" />
+</svg>

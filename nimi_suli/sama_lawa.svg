@@ -5,7 +5,7 @@
    viewBox="0 0 72.0 72.0"
    height="72.0mm"
    id="svg1"
-   sodipodi:docname="li.svg"
+   sodipodi:docname="sama_lawa.svg"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="1.4937934"
-     inkscape:cx="115.81253"
-     inkscape:cy="177.73542"
+     inkscape:zoom="0.79307804"
+     inkscape:cx="361.88116"
+     inkscape:cy="521.38627"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="-8"
@@ -33,7 +33,8 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg1" />
   <path
+     id="path1"
      style="color:#000000;fill:#000000;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none"
-     d="m 26.931641,-2.1367188 a 3.8500049,3.8500049 0 0 0 -2.919922,0.4003907 3.8500049,3.8500049 0 0 0 -1.382813,5.265625 L 41.587891,36 22.628906,68.470703 a 3.8500049,3.8500049 0 0 0 1.382813,5.265625 3.8500049,3.8500049 0 0 0 5.265625,-1.382812 l 20.09375,-34.41211 a 3.8503899,3.8503899 0 0 0 0,-3.882812 L 29.279297,-0.35351563 A 3.8500049,3.8500049 0 0 0 26.931641,-2.1367188 Z"
-     id="path2" />
+     d="m 46.554136,54.875721 -21.29069,0.499711 c -2.12565,0.05027 -3.808102,1.814159 -3.75791,3.939811 0.05027,2.125443 1.813842,3.807811 3.939294,3.75791 l 21.291207,-0.500228 c 2.126055,-0.04943 3.809356,-1.813251 3.759461,-3.939294 -0.05026,-2.126271 -1.815111,-3.808973 -3.941362,-3.75791 z M 18.626125,74.94943 c -2.125807,3.46e-4 -3.849031,1.723571 -3.849377,3.849378 3.47e-4,2.125807 1.72357,3.849031 3.849377,3.849377 H 57.223253 V 74.94943 Z"
+     sodipodi:nodetypes="ccccccccccccc" />
 </svg>

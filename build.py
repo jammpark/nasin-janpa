@@ -33,6 +33,7 @@ EMPTY_GLYPHS = {
     ord(")"): "parenthesisright",
     ord("."): "period",
     ord(":"): "colon",
+    ord("-"): "hyphen",
 }
 
 ALPHABETS = {
@@ -204,6 +205,15 @@ NIMI_UCSUR = {
     0xF199D: ("colon", tuple(["colon"])),
 }
 
+NIMI_PI_LAWA_LINJA = [
+    "kepeken",
+    "lon",
+    "pi",
+    "sama",
+    "tan",
+    "tawa"
+]
+
 def nimi_jan(x: str):
     words = x.split(' ')
     return (words[0], tuple(list(words[0])), tuple(f"toki_{word}" for word in words[1:]))
@@ -223,12 +233,17 @@ def importAndCleanOutlines(outlinefile, glyph):
     glyph.setLayer(foregroundlayer, 'Fore')
 
 font.addLookup('CartoucheVariantsLookup', 'gsub_single', None, (("cv01",(('DFLT',("dflt",)),('latn',("dflt",)),)),))
+font.addLookup('LongGlyphVariantsLookup', 'gsub_single', None, (("cv01",(('DFLT',("dflt",)),('latn',("dflt",)),)),))
 font.addLookup('CartoucheCaltLookup', 'gsub_contextchain', None, (("calt",(('DFLT',("dflt",)),('latn',("dflt",)),)),))
+font.addLookup('LongGlyphCaltLookup', 'gsub_contextchain', None, (("calt",(('DFLT',("dflt",)),('latn',("dflt",)),)),))
 font.addLookup('NimiJanLookup', 'gsub_multiple', None, (("ccmp",(('DFLT',("dflt",)),('latn',("dflt",)),)),))
+font.addLookup('LongGlyphLigatureLookup', 'gsub_ligature', None, (("liga",(('DFLT',("dflt",)),('latn',("dflt",)),)),))
 font.addLookup('SitelenPonaLookup', 'gsub_ligature', None, (("liga",(('DFLT',("dflt",)),('latn',("dflt",)),)),))
 
 font.addLookupSubtable("CartoucheVariantsLookup", "CartoucheVariantsLookupSubtable")
+font.addLookupSubtable("LongGlyphVariantsLookup", "LongGlyphVariantsLookupSubtable")
 font.addLookupSubtable("SitelenPonaLookup", "SitelenPonaLookupSubtable")
+font.addLookupSubtable("LongGlyphLigatureLookup", "LongGlyphLigatureLookupSubtable")
 font.addLookupSubtable("NimiJanLookup", "NimiJanLookupSubtable")
 
 for i in EMPTY_GLYPHS:
@@ -256,6 +271,19 @@ close_cartouche_char = font.createChar(0xF1991, f'toki_closecartouche')
 close_cartouche_char.addPosSub("SitelenPonaLookupSubtable", tuple(["bracketright"]))
 importAndCleanOutlines(f'nimi_suli/closecartouche.svg', close_cartouche_char)
 
+open_long_glyph_char = font.createChar(0xF1997, f'toki_openlongglyph')
+open_long_glyph_char.addPosSub("SitelenPonaLookupSubtable", tuple(["parenthesisleft"]))
+importAndCleanOutlines(f'nimi_suli/openlongglyph.svg', open_long_glyph_char)
+
+close_long_glyph_char = font.createChar(0xF1998, f'toki_closelongglyph')
+close_long_glyph_char.addPosSub("SitelenPonaLookupSubtable", tuple(["parenthesisright"]))
+importAndCleanOutlines(f'nimi_suli/closelongglyph.svg', close_long_glyph_char)
+
+for i in NIMI_PI_LAWA_LINJA:
+    char = font.createChar(-1, f'toki_{i}_lawa')
+    char.addPosSub("LongGlyphLigatureLookupSubtable", tuple([f"toki_{i}", "toki_openlongglyph"]))
+    importAndCleanOutlines(f'nimi_suli/{i}_lawa.svg', char)
+
 for (i, j, k) in NIMI_JAN:
     char = font.createChar(-1, f'toki_{i}')
     char.addPosSub("SitelenPonaLookupSubtable", j)
@@ -265,12 +293,20 @@ font.selection.all()
 font.autoWidth(150)
 open_cartouche_char.right_side_bearing = 0
 close_cartouche_char.left_side_bearing = 0
+open_long_glyph_char.right_side_bearing = 0
+close_long_glyph_char.left_side_bearing = 0
 
 spaceChar = font.createChar(-1, 'space.cart')
+spaceChar.width = 0
+spaceChar = font.createChar(-1, 'space.cont')
 spaceChar.width = 0
 spaceChar = font.createChar(0x20, 'space')
 spaceChar.width = 0
 spaceChar.addPosSub("CartoucheVariantsLookupSubtable", 'space.cart')
+spaceChar.addPosSub("LongGlyphVariantsLookupSubtable", 'space.cont')
+
+for i in NIMI_PI_LAWA_LINJA:
+    font[f'toki_{i}_lawa'].right_side_bearing = 0
 
 fullSpaceChar = font.createChar(0x3000, 'ideographicspace')
 fullSpaceChar.width = FULLWIDTH_SPACE
@@ -327,24 +363,76 @@ for (i, j) in NIMI_SIN:
     char.width = glyph_width
     font[f'toki_{i}'].addPosSub("CartoucheVariantsLookupSubtable", f'toki_{i}.cart')
 
-calt_continue_glyphs = []
-calt_start_glyphs = []
-calt_rule = "",
-
 for i in NIMI_UCSUR:
-    calt_continue_glyphs.append(f'toki_{NIMI_UCSUR[i][0]}.cart')
-    calt_start_glyphs.append(f'toki_{NIMI_UCSUR[i][0]}')
+    char = font.createChar(-1, f'toki_{NIMI_UCSUR[i][0]}.cont')
+    glyph_width = font[f'toki_{NIMI_UCSUR[i][0]}'].width
+
+    pen = char.glyphPen()
+    pen.addComponent(f'toki_{NIMI_UCSUR[i][0]}')
+    pen.moveTo((0, CARTOUCHE_HEIGHT[0]))
+    pen.lineTo((0, CARTOUCHE_HEIGHT[1]))
+    pen.lineTo((glyph_width, CARTOUCHE_HEIGHT[1]))
+    pen.lineTo((glyph_width, CARTOUCHE_HEIGHT[0]))
+    pen.closePath()
+    pen = None
+
+    char.width = glyph_width
+    font[f'toki_{NIMI_UCSUR[i][0]}'].addPosSub("LongGlyphVariantsLookupSubtable", f'toki_{NIMI_UCSUR[i][0]}.cont')
 
 for (i, j) in NIMI_SIN:
-    calt_continue_glyphs.append(f'toki_{i}.cart')
-    calt_start_glyphs.append(f'toki_{i}')
+    char = font.createChar(-1, f'toki_{i}.cont')
+    glyph_width = font[f'toki_{i}'].width
 
-calt_continue_glyphs.append(f'space.cart')
-calt_start_glyphs.append(f'space')
+    pen = char.glyphPen()
+    pen.addComponent(f'toki_{i}')
+    pen.moveTo((0, CARTOUCHE_HEIGHT[0]))
+    pen.lineTo((0, CARTOUCHE_HEIGHT[1]))
+    pen.lineTo((glyph_width, CARTOUCHE_HEIGHT[1]))
+    pen.lineTo((glyph_width, CARTOUCHE_HEIGHT[0]))
+    pen.closePath()
+    pen = None
 
-calt_continue_glyphs.append(f'toki_opencartouche')
-calt_start_glyphs.append(f'toki_closecartouche')
+    char.width = glyph_width
+    font[f'toki_{i}'].addPosSub("LongGlyphVariantsLookupSubtable", f'toki_{i}.cont')
 
-font.addContextualSubtable("CartoucheCaltLookup", "CartoucheCaltLookupSubtable", "coverage", f"[{' '.join(calt_continue_glyphs)}] | [{' '.join(calt_start_glyphs)}] @<CartoucheVariantsLookup>")
+calt_cart_continue_glyphs = []
+calt_cart_start_glyphs = []
+
+for i in NIMI_UCSUR:
+    calt_cart_continue_glyphs.append(f'toki_{NIMI_UCSUR[i][0]}.cart')
+    calt_cart_start_glyphs.append(f'toki_{NIMI_UCSUR[i][0]}')
+
+for (i, j) in NIMI_SIN:
+    calt_cart_continue_glyphs.append(f'toki_{i}.cart')
+    calt_cart_start_glyphs.append(f'toki_{i}')
+
+calt_cart_continue_glyphs.append(f'space.cart')
+calt_cart_start_glyphs.append(f'space')
+
+calt_cart_continue_glyphs.append(f'toki_opencartouche')
+calt_cart_start_glyphs.append(f'toki_closecartouche')
+
+calt_cont_continue_glyphs = []
+calt_cont_start_glyphs = []
+
+for i in NIMI_UCSUR:
+    calt_cont_continue_glyphs.append(f'toki_{NIMI_UCSUR[i][0]}.cont')
+    calt_cont_start_glyphs.append(f'toki_{NIMI_UCSUR[i][0]}')
+
+for (i, j) in NIMI_SIN:
+    calt_cont_continue_glyphs.append(f'toki_{i}.cont')
+    calt_cont_start_glyphs.append(f'toki_{i}')
+
+calt_cont_continue_glyphs.append(f'space.cont')
+calt_cont_start_glyphs.append(f'space')
+
+calt_cont_continue_glyphs.append(f'toki_openlongglyph')
+calt_cont_start_glyphs.append(f'toki_closelongglyph')
+
+for i in NIMI_PI_LAWA_LINJA:
+    calt_cont_continue_glyphs.append(f'toki_{i}_lawa')
+
+font.addContextualSubtable("CartoucheCaltLookup", "CartoucheCaltLookupSubtable", "coverage", f"[{' '.join(calt_cart_continue_glyphs)}] | [{' '.join(calt_cart_start_glyphs)}] @<CartoucheVariantsLookup>")
+font.addContextualSubtable("LongGlyphCaltLookup", "LongGlyphCaltLookupSubtable", "coverage", f"[{' '.join(calt_cont_continue_glyphs)}] | [{' '.join(calt_cont_start_glyphs)}] @<LongGlyphVariantsLookup>")
 
 font.generate(OUTPUTFILENAME)
