@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ASCII' standalone='yes'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="72.0mm" viewBox="0 0 72.0 72.0" height="72.0mm">
+  <g transform="translate(27.9032795, 4.213165499999999) scale(1 1) ">
+    <defs id="defs1"/>
+    <g id="layer1" transform="translate(-421.104,742.08448)">
+      <path style="color:#000000;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none" d="m 425.55775,-742.05867 a 4,4 0 0 0 -2.94297,0.84312 4,4 0 0 0 -0.64188,5.62032 c 0,0 7.32454,9.06624 7.32454,25.29752 0,16.23128 -7.32454,25.2976 -7.32454,25.2976 a 4,4 0 0 0 0.64188,5.62032 4,4 0 0 0 5.62031,-0.64168 c 0,0 9.06235,-11.5452 9.06235,-30.27624 0,-18.73096 -9.06235,-30.27616 -9.06235,-30.27616 a 4,4 0 0 0 -2.67734,-1.4848 z" id="path2"/>
+    </g>
+  </g>
+</svg>
