@@ -16,6 +16,7 @@ font.version = "1.0"
 
 SVGHEIGHT = 72
 GLYPHHEIGHT = 1000
+FULLWIDTH_SPACE = 850
 PORTIONABOVEBASELINE = 0.8
 CARTOUCHE_HEIGHT = (-349, -243, 841, 948)
 
@@ -270,6 +271,10 @@ spaceChar.width = 0
 spaceChar = font.createChar(0x20, 'space')
 spaceChar.width = 0
 spaceChar.addPosSub("CartoucheVariantsLookupSubtable", 'space.cart')
+
+fullSpaceChar = font.createChar(0x3000, 'ideographicspace')
+fullSpaceChar.width = FULLWIDTH_SPACE
+fullSpaceChar.addPosSub("SitelenPonaLookupSubtable", tuple(["space", "space"]))
 
 for i in EMPTY_GLYPHS:
     font[i].width = 0
