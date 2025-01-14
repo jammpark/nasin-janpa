@@ -15,10 +15,10 @@ font.copyright = "Copyright (c) 2025 jan Janpa"
 font.version = "1.0"
 
 SVGHEIGHT = 72
-GLYPHHEIGHT = 1000
+GLYPHHEIGHT = 800
 FULLWIDTH_SPACE = 850
 PORTIONABOVEBASELINE = 1.0
-CARTOUCHE_HEIGHT = (-149, -43, 1041, 1148)
+CARTOUCHE_HEIGHT = (-119, -34, 833, 918)
 
 SCALEFACTOR = GLYPHHEIGHT / SVGHEIGHT
 
@@ -217,6 +217,7 @@ NIMI_PI_LAWA_LINJA = [
 def nimi_jan(x: str):
     words = x.split(' ')
     return (words[0], tuple(list(words[0])), tuple(f"toki_{word}" for word in words[1:]))
+
 
 NIMI_SIN = [ (x[:-4], tuple(list(x[:-4]))) for x in os.listdir("nimi_sin") ]
 NIMI_JAN = [ nimi_jan(x.strip()) for x in open("nimi_jan.txt").readlines() ]
@@ -435,9 +436,9 @@ for i in NIMI_PI_LAWA_LINJA:
 font.addContextualSubtable("CartoucheCaltLookup", "CartoucheCaltLookupSubtable", "coverage", f"[{' '.join(calt_cart_continue_glyphs)}] | [{' '.join(calt_cart_start_glyphs)}] @<CartoucheVariantsLookup>")
 font.addContextualSubtable("LongGlyphCaltLookup", "LongGlyphCaltLookupSubtable", "coverage", f"[{' '.join(calt_cont_continue_glyphs)}] | [{' '.join(calt_cont_start_glyphs)}] @<LongGlyphVariantsLookup>")
 
-font.os2_winascent = 950
-font.os2_windescent = 413
-font.os2_typoascent = 950
-font.os2_typodescent = -413
+font.os2_winascent = 0
+font.os2_windescent = -50
+font.os2_typoascent = 120
+font.os2_typodescent = 80
 
 font.generate(OUTPUTFILENAME)
