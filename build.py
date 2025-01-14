@@ -435,4 +435,9 @@ for i in NIMI_PI_LAWA_LINJA:
 font.addContextualSubtable("CartoucheCaltLookup", "CartoucheCaltLookupSubtable", "coverage", f"[{' '.join(calt_cart_continue_glyphs)}] | [{' '.join(calt_cart_start_glyphs)}] @<CartoucheVariantsLookup>")
 font.addContextualSubtable("LongGlyphCaltLookup", "LongGlyphCaltLookupSubtable", "coverage", f"[{' '.join(calt_cont_continue_glyphs)}] | [{' '.join(calt_cont_start_glyphs)}] @<LongGlyphVariantsLookup>")
 
+font.os2_winascent = 950
+font.os2_windescent = 413
+font.os2_typoascent = 950
+font.os2_typodescent = -413
+
 font.generate(OUTPUTFILENAME)
